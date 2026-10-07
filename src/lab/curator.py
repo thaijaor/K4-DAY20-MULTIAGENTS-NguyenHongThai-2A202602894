@@ -111,7 +111,7 @@ def curate_skills(results_dir="results", source_condition="baseline", out_dir=No
         "description: Use when <trigger>.\n---\n<checklist>\n=== END ===\n\n"
         "Learning runs:\n" + json.dumps(runs, ensure_ascii=False, indent=2)
     )
-    reply = (model if model is not None else make_model()).invoke(prompt).content
+    reply = (model if model is not None else make_model()).invoke(prompt).text
     written = []
     for name, text in parse_skill_blocks(reply):
         if len(written) >= max_skills:
